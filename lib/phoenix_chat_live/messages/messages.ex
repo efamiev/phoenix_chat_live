@@ -19,7 +19,7 @@ defmodule PhoenixChatLive.Messages do
   defp broadcast_change({:ok, message}, event) do
     Phoenix.PubSub.broadcast(
       PhoenixChatLive.PubSub,
-      "chats",
+      "chats:#{message.chat_id}",
       {event, message}
     )
 

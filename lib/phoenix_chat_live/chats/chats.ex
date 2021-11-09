@@ -22,4 +22,8 @@ defmodule PhoenixChatLive.Chats do
 
     Repo.all(query, preload: [:messages])
   end
+
+  def subscribe(chat_id) do
+    Phoenix.PubSub.subscribe(PhoenixChatLive.PubSub, "chats:#{chat_id}")
+  end
 end

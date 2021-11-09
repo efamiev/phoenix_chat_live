@@ -9,10 +9,10 @@ defmodule PhoenixChatLiveWeb.ChatLive do
 
   @impl true
   def mount(%{"chat_name" => chat_name}, _session, socket) do
-    Phoenix.PubSub.subscribe(PhoenixChatLive.PubSub, "chats")
-
     case Chats.chat_by_title(chat_name) do
       %Chat{} = chat ->
+        Chats.subscribe(chat.id)
+
         messages = Chats.chat_messages_list(chat)
 
         socket =
@@ -42,6 +42,8 @@ defmodule PhoenixChatLiveWeb.ChatLive do
   def handle_event("send_message", %{"form" => %{"author" => author, "text" => text}}, socket) do
     case Chats.create_chat(%{title: socket.assigns.chat_name}) do
       {:ok, chat} ->
+        Chats.subscribe(chat.id)
+
         create_message(%{
           author: author,
           text: text,
