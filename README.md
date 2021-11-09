@@ -1,19 +1,17 @@
 # PhoenixChatLive
 
-To start your Phoenix server:
+## Для запуск проекта
 
-  * Install dependencies with `mix deps.get`
-  * Install Node.js dependencies with `npm install` inside the `assets` directory
-  * Start Phoenix endpoint with `mix phx.server`
+  * Установка зависимостей elixir `mix deps.get`
+  * Установка зависимостей node.js `cd assets && npm i`
+  * Для работы с google api установите переменную среды\
+    `export GOOGLE_APPLICATION_CREDENTIALS=path-to-json-credentials-file/phoenix_chat_live/translate-chat-331020-3308ee9fa4d5.json`
+  * Запуск `mix phx.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Сервис будет доступен на [`localhost:4000`](http://localhost:4000).
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## Функционал
 
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+  * Создайте чат, передя по [`localhost:4000/chats/first_chat`](http://localhost:4000/chats/first_chat)
+  * Продублируйте вкладку с созданным чатом
+  * Отправляйте сообщения
